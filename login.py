@@ -4,6 +4,20 @@ from wtforms.validators import DataRequired
 from wtforms.fields.html5 import EmailField
 
 
+class LoginForm(FlaskForm):
+    email = EmailField('Почта', validators=[DataRequired()])
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    remember_me = BooleanField('Запомнить меня')
+    submit = SubmitField('Войти')
+
+
+class NewsForm(FlaskForm):
+    title = StringField('Заголовок', validators=[DataRequired()])
+    content = TextAreaField("Содержание")
+    is_private = BooleanField("Личное")
+    submit = SubmitField('Применить')
+
+
 class RegisterForm(FlaskForm):
     email = EmailField('Почта', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
